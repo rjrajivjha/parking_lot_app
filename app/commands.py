@@ -1,0 +1,6 @@
+CREATE_PARKING_LOT = 'Create_parking_lot'
+LEAVE = 'Leave'
+PARK = 'Park'
+SLOT_FOR_CAR_WITH_NUMBER = 'Slot_number_for_car_with_number'
+SLOTS_FOR_DRIVER_OF_AGE = 'Slot_numbers_for_driver_of_age'
+VEHICLE_REGISTRATION_NUMBERS_FOR_DRIVER_OF_AGE = 'Vehicle_registration_number_for_driver_of_age'

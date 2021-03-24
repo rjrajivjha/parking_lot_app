@@ -2,9 +2,8 @@ import os
 import sys
 from typing import IO
 
-from constants import *
 from parking_lot import ParkingLot
-from squad_app.app.vehicle import Vehicle
+from squad_app.app.commands import CREATE_PARKING_LOT
 
 
 def read_file(file_name: str) -> IO:
@@ -19,9 +18,27 @@ def read_file(file_name: str) -> IO:
         exit()
 
 
+def parse_line(line):
+    command, *args = line.strip().split(' ')
+    return command, args
+
+
+def parse_parking_lot_creation(line):
+    first_command, *slots = parse_line(line)
+    if first_command == CREATE_PARKING_LOT and len(slots) == 1:
+        return int(slots[0])
+    else:
+        print('Could not create parking lot initially, you might miss some customers :(')
+        exit(1)
+
+
+def create_parking_lot(slots):
+    print(f'Creating Parking lot of {slots} slots.')
+    return ParkingLot(slots)
+
+
 if __name__ == '__main__':
     """
-    cd app
     python -m squad_app ABSOLUTE_FILE_PATH or RELATIVE_FILE_PATH or '../mocks/input.txt'
     """
     try:
@@ -30,41 +47,9 @@ if __name__ == '__main__':
         print("Please pass a file to see how can I run Parking lot.")
         exit()
 
-    with read_file(input_file) as file_handler:
-        initial_command = file_handler.readline().strip().split(' ')
-        parking_created_flag = False
-
-        if initial_command[0] == CREATE_PARKING_LOT:
-            print(f'Creating Parking lot of {initial_command[1]} slots.')
-            parking_lot = ParkingLot(int(initial_command[1]))
-            parking_created_flag = True
-        else:
-            print('Could not create parking lot initially, you might miss some customers :(')
-
-        for line in file_handler:
-            command = line.strip().split(' ')
-
-            if command[0] == CREATE_PARKING_LOT and not parking_created_flag:
-                parking_lot = ParkingLot(int(initial_command[1]))
-                parking_created_flag = True
-
-            elif parking_created_flag and command[0] == PARK and len(command) == 4:
-                print(f'Park car with Vehicle Registration Number: {command[1]}, '
-                      f'and the car is driven by driver of Age : {command[3]}')
-                parking_lot.park(Vehicle(command[1], int(command[3])))
-
-            elif parking_created_flag and command[0] == LEAVE:
-                print(f'Vacating slot : {command[1]}')
-                parking_lot.leave(int(command[1]))
-
-            elif parking_created_flag and command[0] == SLOT_NUMBER_FOR_CAR_WITH_NUMBER:
-                slot_num = parking_lot.get_slot_num_for_car_with_reg_num(command[1])
-                print(f'The car {command[1]} is parked at {slot_num}')
-
-            elif parking_created_flag and command[0] == SLOT_NUMBERS_FOR_DRIVER_OF_AGE:
-                slot_list = parking_lot.get_slot_num_for_drivers_of_age(command[1])
-                print(f'Slot Number List for Drivers of Age {command[1]} is {slot_list}')
-
-            elif parking_created_flag and command[0] == VEHICLE_REGISTRATION_NUMBER_FOR_DRIVER_OF_AGE:
-                slot_list = parking_lot.get_vehicle_reg_num_for_drivers_of_age(command[1])
-                print(f'Vehicle Number List for Drivers of Age {command[1]} is {slot_list}')
+    with read_file(input_file) as file:
+        slots = parse_parking_lot_creation(file.readline())
+        parking_lot = create_parking_lot(slots)
+        for line in file:
+            command, *args = parse_line(line)
+            parking_lot.execute_command(command, args)
