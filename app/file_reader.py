@@ -6,12 +6,12 @@ def read_file(file_name: str) -> IO:
     try:
         if os.path.getsize(file_name) == 0:
             print('File is empty')
-            exit()
+            exit(1)
         return open(file_name)
     except FileNotFoundError as msg:
         # Custom exception
         print('The file does not exist, please try again.', msg)
-        exit()
+        exit(1)
 
 
 def parse_line(line):

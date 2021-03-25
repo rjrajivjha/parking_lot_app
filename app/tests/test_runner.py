@@ -1,7 +1,6 @@
 import unittest
 
 from squad_app.app.runner import *
-from squad_app.app import parking_lot
 
 
 def test_create_parking_lot():
