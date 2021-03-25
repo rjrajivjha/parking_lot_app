@@ -1,4 +1,5 @@
 from squad_app.app.vehicle import Vehicle
+from typing import Optional
 
 
 class ParkingLot:
@@ -50,14 +51,14 @@ class ParkingLot:
                 return slot
         return 0
 
-    def __park_at_slot(self, vehicle, slot):
+    def __park_at_slot(self, vehicle: Vehicle, slot: int) ->bool:
         self.parking_slots[slot] = vehicle
         self.slots_occupied += 1
         print(f'Car with vehicle registration number "{vehicle.registration_number}" has been parked at '
               f'slot number {slot}')
         return True
 
-    def __leave(self, slot: int):
+    def __leave(self, slot: int) -> bool:
         vehicle = self.parking_slots.get(slot)
         print(f"Slot Number {slot} vacated, the car with registration number"
               f" {vehicle.registration_number} left the space, the driver of car was of age {vehicle.driver_age}")
@@ -65,13 +66,13 @@ class ParkingLot:
         self.slots_occupied -= 1
         return True
 
-    def __is_parking_lot_full(self):
+    def __is_parking_lot_full(self) -> bool:
         return self.slots_occupied == self.number_of_slots
 
-    def __is_vehicle_parked(self, registration_number):
+    def __is_vehicle_parked(self, registration_number: str) -> bool:
         return self.slot_number_by_registration_number(registration_number) != 0
 
-    def __next_available_slot(self):
+    def __next_available_slot(self) -> Optional[int]:
         for slot, vehicle in self.parking_slots.items():
             if vehicle is None:
                 return slot
