@@ -18,17 +18,14 @@ What does this app do?
 
 **Basic Set up**
 
-- Open cloned repository using Pycharm IDE
+- Open cloned repository.
+  The project is stable over python version >= 3.6.9
 - Setup python virtual environment for the project using Pycharm settings (Make sure you create virtual environment 
   outside the project directory to avoid unnecessary errors.)
   ```
-  pip3 install virtualenv
-  or 
-  pip install virtualenv
+  pip3.7 install virtualenv
   ```
-
-P.S : Might have to use sudo while creating virtualenv, although not recommended.
-  
+ 
   ```
   virtualenv squad
   ```
@@ -46,13 +43,12 @@ P.S : Might have to use sudo while creating virtualenv, although not recommended
 ```
 cd squad_app/
 git checkout master  #if not already in master.
-pip install -r requirements.txt # only for first time or whenever required or prompted by terminal.
+pip install -r requirements.txt 
 cd app/
-python -m main 'mocks/input.txt'
+python -m main 'tests/mocks/input.txt'
 ```
-P.S : use pip3 if pip not working
 
-Sample Input file : mocks/input.txt 
+Sample Input file : tests/mocks/input.txt 
 
 - To test on another file use : 
 

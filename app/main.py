@@ -10,7 +10,7 @@ def initialize_parking_lot(line):
 
 if __name__ == '__main__':
     """
-    python -m squad_app ABSOLUTE_FILE_PATH or RELATIVE_FILE_PATH or '../mocks/input.txt'
+    python -m main ABSOLUTE_FILE_PATH or RELATIVE_FILE_PATH or 'tests/mocks/input.txt'
     """
     try:
         input_file = sys.argv[1]
