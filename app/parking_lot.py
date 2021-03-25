@@ -1,4 +1,4 @@
-from squad_app.app.vehicle import Vehicle
+from vehicle import Vehicle
 from typing import Optional
 
 
