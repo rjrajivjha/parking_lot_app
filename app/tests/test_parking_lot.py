@@ -1,5 +1,4 @@
 import unittest
-
 from squad_app.app.parking_lot import ParkingLot
 from squad_app.app.vehicle import Vehicle
 

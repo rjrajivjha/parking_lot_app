@@ -2,7 +2,7 @@
 
 Author : Rajiv Kumar Jha <fork.rajiv@gmail.com> `rjrajivjha`
 
-Problem File : `https://docs.google.com/document/d/16WqeWkeRLKCn1JW4hL-4n1Wk-Or_Kt9qUQSC6VawRN0/edit`
+Problem File : [Link to Problem File](https://docs.google.com/document/d/16WqeWkeRLKCn1JW4hL-4n1Wk-Or_Kt9qUQSC6VawRN0/edit)
 
 What does this app do?
 - Create a parking lot
@@ -18,6 +18,22 @@ What does this app do?
 
 *How to start the app:*
 
-`python -m squadapp <absolute_or_relative_path_to_input_file>`
+```
+cd app/
+python -m main <absolute_or_relative_path_to_input_file>`
+```
 
 Sample Input file : mocks/input.txt
+
+*How to run the testcase:*
+
+To run all testcases from project root: `python -m pytest tests/`
+
+To run a single test file :
+
+```
+python -m pytest tests/test_main.py
+python -m pytest tests/test_runner.py
+python -m pytest test/test_parking_lot.py
+
+```

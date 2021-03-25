@@ -1,13 +1,14 @@
 import unittest
 
 from squad_app.app.runner import *
+from squad_app.app import parking_lot
 
 
 def test_create_parking_lot():
     command = CREATE_PARKING_LOT
     args = [6]
     parking_lot_instance = create_parking_lot(command, args)
-    assert isinstance(parking_lot_instance, ParkingLot)
+    assert parking_lot_instance.number_of_slots == 6
 
 
 def test_create_parking_lot_wrong_command():
@@ -78,4 +79,5 @@ def test_execute_command_vehicle_registration_number_by_driver_age_wrong_args():
 
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
+

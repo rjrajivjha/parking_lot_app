@@ -51,5 +51,5 @@ def execute_command(parking_lot: ParkingLot, command: str, args: list) -> bool:
         slot_list = parking_lot.vehicle_registration_numbers_by_driver_age(driver_age)
         print(f'Vehicle Number List for Drivers of Age {driver_age} is {slot_list}')
         return True
-
+    print(f'Following command : {command} or arguments: {args} are Incorrect. \n Moving to Next command')
     return False
