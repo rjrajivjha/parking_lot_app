@@ -59,38 +59,38 @@ class TestParkingLot(unittest.TestCase):
         self.set_up_full_parking()
         driver_age = 21
         expected_slot_numbers = [1]
-        assert self.parking_lot.slot_numbers_by_driver_age(driver_age) == expected_slot_numbers
+        self.assertListEqual(self.parking_lot.slot_numbers_by_driver_age(driver_age), expected_slot_numbers)
 
     def test_slot_numbers_by_non_existing_driver_age(self):
         self.set_up_full_parking()
         driver_age = 24
         expected_slot_numbers = []
-        assert self.parking_lot.slot_numbers_by_driver_age(driver_age) == expected_slot_numbers
+        self.assertListEqual(self.parking_lot.slot_numbers_by_driver_age(driver_age), expected_slot_numbers)
 
     def test_vehicle_registration_numbers_by_driver_age(self):
         self.set_up_full_parking()
         driver_age = 22
         expected_registration_numbers = ['KA-01-HH-1236', 'KA-01-HH-1235']
-        assert set(self.parking_lot.vehicle_registration_numbers_by_driver_age(driver_age)) == set(
-            expected_registration_numbers)
+        self.assertListEqual(self.parking_lot.vehicle_registration_numbers_by_driver_age(driver_age),
+                             expected_registration_numbers)
 
     def test_vehicle_registration_numbers_by_non_existing_driver_age(self):
         self.set_up_full_parking()
         driver_age = 24
         expected_registration_numbers = []
-        assert self.parking_lot.vehicle_registration_numbers_by_driver_age(driver_age) == expected_registration_numbers
+        self.assertListEqual(self.parking_lot.vehicle_registration_numbers_by_driver_age(driver_age), expected_registration_numbers)
 
     def test_slot_number_by_registration_number(self):
         self.set_up_full_parking()
         registration_number = 'KA-01-HH-1234'
         expected_slot = 1
-        assert self.parking_lot.slot_number_by_registration_number(registration_number) == expected_slot
+        self.assertEqual(self.parking_lot.slot_number_by_registration_number(registration_number), expected_slot)
 
     def test_slot_number_by_registration_number_of_un_parked_vehicle(self):
         self.set_up_full_parking()
         registration_number = 'KA-01-HH-1237'
         no_slot = 0
-        assert self.parking_lot.slot_number_by_registration_number(registration_number) == no_slot
+        self.assertEqual(self.parking_lot.slot_number_by_registration_number(registration_number), no_slot)
 
 
 if __name__ == '__main__':
