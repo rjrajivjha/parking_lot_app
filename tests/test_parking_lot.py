@@ -70,7 +70,7 @@ class TestParkingLot(unittest.TestCase):
     def test_vehicle_registration_numbers_by_driver_age(self):
         self.set_up_full_parking()
         driver_age = 22
-        expected_registration_numbers = ['KA-01-HH-1236', 'KA-01-HH-1235']
+        expected_registration_numbers = ['KA-01-HH-1235', 'KA-01-HH-1236']
         self.assertListEqual(self.parking_lot.vehicle_registration_numbers_by_driver_age(driver_age),
                              expected_registration_numbers)
 
