@@ -1,40 +1,11 @@
-import os
 import sys
-from typing import IO
 
-from parking_lot import ParkingLot
-from squad_app.app.commands import CREATE_PARKING_LOT
-
-
-def read_file(file_name: str) -> IO:
-    try:
-        if os.path.getsize(file_name) == 0:
-            print('File is empty')
-            exit()
-        return open(file_name)
-    except FileNotFoundError as msg:
-        # Custom exception
-        print('The file does not exist, please try again.', msg)
-        exit()
+from squad_app.app.runner import execute_command, create_parking_lot
+from squad_app.app.file_reader import parse_line, read_file
 
 
-def parse_line(line):
-    command, *args = line.strip().split(' ')
-    return command, args
-
-
-def parse_parking_lot_creation(line):
-    first_command, *slots = parse_line(line)
-    if first_command == CREATE_PARKING_LOT and len(slots) == 1:
-        return int(slots[0])
-    else:
-        print('Could not create parking lot initially, you might miss some customers :(')
-        exit(1)
-
-
-def create_parking_lot(slots):
-    print(f'Creating Parking lot of {slots} slots.')
-    return ParkingLot(slots)
+def initialize_parking_lot(line):
+    return create_parking_lot(parse_line(line))
 
 
 if __name__ == '__main__':
@@ -48,8 +19,7 @@ if __name__ == '__main__':
         exit()
 
     with read_file(input_file) as file:
-        slots = parse_parking_lot_creation(file.readline())
-        parking_lot = create_parking_lot(slots)
+        parking_lot = initialize_parking_lot(file.readline())
         for line in file:
             command, *args = parse_line(line)
-            parking_lot.execute_command(command, args)
+            execute_command(parking_lot, command, args)
