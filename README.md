@@ -16,14 +16,40 @@ What does this app do?
     - Vehicle_registration_number_for_driver_of_age
         `Vehicle_registration_number_for_driver_of_age 18`
 
+**Basic Set up**
+
+- Open cloned repository using Pycharm IDE
+- Setup python virtual environment for the project using Pycharm settings (Make sure you create virtual environment 
+  outside the project directory to avoid unnecessary errors.)
+  ```
+  pip3 install virtualenv
+  virtualenv squad
+  ```
+  
+- Activate virtual environment
+  ```
+  For Ubuntu : ./squad/bin/activate
+  For Mac : source squad/bin/activate
+  ```
+  
+- Please checkout to master branch before executing following commands.
+
+
 *How to start the app:*
 
 ```
+cd squad_app/
+git checkout master  #if not already in master.
 cd app/
+python -m main 'mocks/input.txt'
+```
+Sample Input file : mocks/input.txt 
+
+- To test on another file use : 
+
+```
 python -m main <absolute_or_relative_path_to_input_file>`
 ```
-
-Sample Input file : mocks/input.txt
 
 *How to run the testcase:*
 
@@ -32,8 +58,8 @@ To run all testcases from project root: `python -m pytest tests/`
 To run a single test file :
 
 ```
-python -m pytest tests/test_main.py
+python -m pytest tests/test_file_reader.py
 python -m pytest tests/test_runner.py
-python -m pytest test/test_parking_lot.py
+python -m pytest tests/test_parking_lot.py
 
 ```
