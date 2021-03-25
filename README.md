@@ -28,7 +28,7 @@ What does this app do?
   
 - Activate virtual environment
   ```
-  For Ubuntu : ./squad/bin/activate
+  For Ubuntu : source squad/bin/activate
   For Mac : source squad/bin/activate
   ```
   
@@ -40,6 +40,7 @@ What does this app do?
 ```
 cd squad_app/
 git checkout master  #if not already in master.
+pip install -r requirements.txt # only for first time or if required.
 cd app/
 python -m main 'mocks/input.txt'
 ```
