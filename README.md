@@ -23,13 +23,19 @@ What does this app do?
   outside the project directory to avoid unnecessary errors.)
   ```
   pip3 install virtualenv
+  or 
+  pip install virtualenv
+  ```
+
+P.S : Might have to use sudo while creating virtualenv, although not recommended.
+  
+  ```
   virtualenv squad
   ```
   
 - Activate virtual environment
   ```
-  For Ubuntu : source squad/bin/activate
-  For Mac : source squad/bin/activate
+  For Ubuntu and Mac: source squad/bin/activate
   ```
   
 - Please checkout to master branch before executing following commands.
@@ -40,10 +46,12 @@ What does this app do?
 ```
 cd squad_app/
 git checkout master  #if not already in master.
-pip install -r requirements.txt # only for first time or if required.
+pip install -r requirements.txt # only for first time or whenever required or prompted by terminal.
 cd app/
 python -m main 'mocks/input.txt'
 ```
+P.S : use pip3 if pip not working
+
 Sample Input file : mocks/input.txt 
 
 - To test on another file use : 
