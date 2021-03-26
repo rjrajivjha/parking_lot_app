@@ -23,7 +23,7 @@ What does this app do?
 - Setup python virtual environment for the project using Pycharm settings (Make sure you create virtual environment 
   outside the project directory to avoid unnecessary errors.)
   ```
-  pip3.7 install virtualenv
+  pip3 install virtualenv
   ```
  
   ```
