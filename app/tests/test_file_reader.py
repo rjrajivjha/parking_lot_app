@@ -3,13 +3,13 @@ from squad_app.app.file_reader import *
 
 
 def test_read_file():
-    file_name = 'mocks/input.txt'
+    file_name = 'tests/mocks/input.txt'
     handler = read_file(file_name)
     assert True if handler else False
 
 
 def test_read_wrong_file():
-    file_name = 'mocks/inpu.txt'
+    file_name = 'inpu.txt'
     with unittest.TestCase.assertRaises(None, expected_exception=SystemExit) as cm:
         read_file(file_name)
     assert cm.exception.code == 1
