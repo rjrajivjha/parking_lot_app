@@ -2,7 +2,6 @@
 
 Author : Rajiv Kumar Jha <fork.rajiv@gmail.com> `rjrajivjha`
 
-Problem File : [Link to Problem File](https://docs.google.com/document/d/16WqeWkeRLKCn1JW4hL-4n1Wk-Or_Kt9qUQSC6VawRN0/edit)
 
 What does this app do?
 - Create a parking lot
