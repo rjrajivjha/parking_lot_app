@@ -1,4 +1,4 @@
-**Squad Parking Lot**
+**Parking Lot**
 
 Author : Rajiv Kumar Jha <fork.rajiv@gmail.com> `rjrajivjha`
 
@@ -27,12 +27,12 @@ What does this app do?
   ```
  
   ```
-  virtualenv squad
+  virtualenv parking_lot
   ```
   
 - Activate virtual environment
   ```
-  For Ubuntu and Mac: source squad/bin/activate
+  For Ubuntu and Mac: source parking_lot/bin/activate
   ```
   
 - Please checkout to master branch before executing following commands.
@@ -41,7 +41,7 @@ What does this app do?
 *How to start the app:*
 
 ```
-cd squad_app/
+cd parking_lot_app/
 git checkout master  #if not already in master.
 pip install -r requirements.txt 
 cd app/
